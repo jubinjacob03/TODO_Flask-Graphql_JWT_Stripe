@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>To-do List</title>
+
+		<style>
+			body {
+				background: url(" {{ url_for('static',filename='images/7171344.jpg') }}")
+					no-repeat;
+			}
+		</style>
+
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static',filename='css/main.css') }}"
+		/>
+
+		<script>
+			const user = {{ user | tojson }};
+			         const todos = {{ todos | tojson }};
+		</script>
+
+		<script defer src="{{ url_for('static',filename='js/app.js') }}"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="header">
+				<h1>
+					TODO APP {% if user.premium %}
+					<i>ᵖʳᵒ</i>
+					{% endif %}
+				</h1>
+
+				{% if not user.premium %}
+				<a href="{{ url_for('premium_get') }}">
+					<button id="pro_user" class="pro-btn">
+						<b>Pro Licence</b>
+					</button>
+				</a>
+				{% endif %}
+				<button class="sign-out-btn"><b>Sign Out</b></button>
+			</div>
+
+			<table>
+				<colgroup>
+					<col span="1" style="width: 25%" />
+					<col span="1" style="width: 40%" />
+					<col span="1" style="width: 8%" />
+					{% if user.premium %}
+					<col span="1" style="width: 17%" />
+					{% endif %}
+					<col span="1" style="width: 10%" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Time</th>
+						{% if user.premium %}
+						<th>Image</th>
+						{% endif %}
+						<th>Options</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				<tfoot>
+					<tr>
+						<td>
+							<div class="input-box">
+								<input
+									id="new-title"
+									type="text"
+									placeholder="Enter title"
+									required
+								/>
+							</div>
+						</td>
+						<td>
+							<div class="input-box">
+								<input
+									id="new-desc"
+									required
+									type="text"
+									placeholder="Enter description"
+								/>
+							</div>
+						</td>
+						<td></td>
+						{% if user.premium %}
+						<td>
+							<div class="input-box">
+								<input
+									id="new-images"
+									required
+									type="text"
+									placeholder="Add url of image"
+								/>
+							</div>
+							<button class="edit-btn"><b>Add</b></button>
+						</td>
+						{% endif %}
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<center>
+				<button class="add-task-btn"><b>ADD TASK</b></button>
+			</center>
+		</div>
+	</body>
+</html>
