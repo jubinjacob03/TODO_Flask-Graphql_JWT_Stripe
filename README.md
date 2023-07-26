@@ -2,7 +2,7 @@
 This is a Python Flask app ( TODO APP ) that uses JWT ( JSON Web Tokens ) for user-authentication &amp; for securing all GraphQL Endpoints, Uses the GraphQL  query language to handle all API calls &amp; connect with MySQL  Database, and Stripe (test mode) for payment integration.
 
 # About the project
-- This project was assigned by [Dendrite.ai]([https://nodejs.org/en/about](https://dendrite.ai/)) as a short assignment for internship application short-listing.
+- This project was assigned by [Dendrite.ai](https://dendrite.ai/) as a short assignment for internship application short-listing.
 - The project Details provided by Dendrite.ai are provided below :
 <h3>Problem Statement:</h3>  
 The objective of this python project is to create a To-Do List with Graphql API calls.
@@ -42,3 +42,8 @@ d.	Edit a To-Do.<br>
 3.	Please do not send LinkedIn Request to Connect!<br> 
 4.	PLEASE MAKE SURE YOU SUBMIT EVERYTHING VIA A GITHUB LINK AND PLS UPLOAD ALL ASSETS AND FILES INCLUDING KEYCLOAK DOCKER ETC.<br> 
 
+# Modifications to this project
+- Due to <i><b>poor and limited documentation</b></i> <code>Keycloak intergration was aborted.</code>
+- Docker was <i><b>crashing multiple times</b></i> and <i><b>back-end codes</b></i> for assigning role switch (*required as it is needed to integrate stripe payment which authorized the access of certain features as a premium member) <i><b>was not found</b></i> in documentation.
+- Replacement of Keycloak was done with <code>JWT & Jsonify,</code> This was because I found that <i><b>Keycloak also uses JWT</b></i> to verify users.
+- My <i><b>dearly apologies</b></i> for not using Keycloak afor Authentication , due to the above mentioned reasons.
